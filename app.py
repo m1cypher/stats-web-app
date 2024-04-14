@@ -1,11 +1,21 @@
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask(__name__)
+
+app = Flask(__name__, template_folder='templates')
 
 
 @app.route('/')
 def index():
-    return "<h1>Hello World</h1>"
+    return render_template('index.html')
+
+
+@app.route('/resume')
+def resume():
+    return "<h1>Garrett Boyd's Resume</h1>"
+
+@app.route('/greet/<name>')
+def greet(name):
+    return f"Hello {name}"
     
 
 
